@@ -11,14 +11,14 @@ class Events extends Component {
     super(props);
     this.state = {
       title: 'Search For Obrite Events',
-      event: [],
+      events: [],
     };
   }
 
   componentDidMount() {
     axios.get('https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=fGchp4gcJKe22eomi9nNMjD7Awn9vUFg')
       .then(res => {
-        this.setState({events: {...res.data._embedded.events}});
+        this.setState({events: [...res.data._embedded.events]});
         console.log(this.state);
       })
       .catch(err => console.log(err));
@@ -37,8 +37,8 @@ class Events extends Component {
             </div>
             <div className="row">
               {
-                this.state.events && this.state.events.map((event) => (
-                <Event event={'event'} />
+                this.state.events.length && this.state.events.map((event) => (
+                  <Event event={event} key={event.id} />
                 ))
               }
             </div>
