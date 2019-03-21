@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="theme-color" content="#000000" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -14,25 +12,25 @@
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Work+Sans:300,400,700" rel="stylesheet">
-     <link rel="stylesheet" href="%PUBLIC_URL%/assets/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/fonts/icomoon/style.css">
 
-     <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/bootstrap.min.css">
-     <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/magnific-popup.css">
-     <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/jquery-ui.css">
-     <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/owl.carousel.min.css">
-     <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/owl.theme.default.min.css">
-     <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/bootstrap-datepicker.css">
-     <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/animate.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/animate.css">
 
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
 
 
 
-     <link rel="stylesheet" href="%PUBLIC_URL%/assets/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/fonts/flaticon/font/flaticon.css">
 
-     <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/aos.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/aos.css">
 
-     <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/style.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/assets/css/style.css">
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -43,8 +41,9 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Obrite</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
@@ -78,21 +77,24 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-                  var mediaElements = document.querySelectorAll('video, audio'), total = mediaElements.length;
+            var mediaElements = document.querySelectorAll('video, audio'),
+                total = mediaElements.length;
 
-                  for (var i = 0; i < total; i++) {
-                      new MediaElementPlayer(mediaElements[i], {
-                          pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
-                          shimScriptAccess: 'always',
-                          success: function () {
-                              var target = document.body.querySelectorAll('.player'), targetTotal = target.length;
-                              for (var j = 0; j < targetTotal; j++) {
-                                  target[j].style.visibility = 'visible';
-                              }
+            for (var i = 0; i < total; i++) {
+                new MediaElementPlayer(mediaElements[i], {
+                    pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
+                    shimScriptAccess: 'always',
+                    success: function() {
+                        var target = document.body.querySelectorAll('.player'),
+                            targetTotal = target.length;
+                        for (var j = 0; j < targetTotal; j++) {
+                            target[j].style.visibility = 'visible';
+                        }
                     }
-                  });
-                  }
-              });
-      </script>
-  </body>
+                });
+            }
+        });
+    </script>
+</body>
+
 </html>
