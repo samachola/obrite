@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Script from 'react-load-script';
+import axios from 'axios';
 
 class Search extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class Search extends Component {
     this.handleScriptLoad = this.handleScriptLoad.bind(this);
     this.handlePlaceSelect = this.handlePlaceSelect.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.searchEvents = this.searchEvents.bind(this);
   }
 
   handleScriptLoad() {
@@ -32,13 +34,14 @@ class Search extends Component {
   handlePlaceSelect() {
     let addressObject = this.autocomplete.getPlace();
     let address = addressObject.address_components;
-    console.log('address', address);
-    console.log(addressObject);
     if (address) {
       this.setState({
         city: address[0].long_name,
         query: addressObject.formatted_address,
+        location: addressObject.geometry.location,
       })
+
+      this.searchEvents();
     }
   }
 
@@ -47,6 +50,29 @@ class Search extends Component {
       query: event.target.value,
     })
   }
+
+  async searchEvents() {
+      console.log(this.state.location);
+      if (this.state.location && this.state.location.lat() && this.state.location.lng() ) {
+        const lat = this.state.location.lat();
+        const lng = this.state.location.lng();
+
+        console.log(lat, lng);
+        const latlng = `${lat},${lng}`;
+        const url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=fGchp4gcJKe22eomi9nNMjD7Awn9vUFg&${latlng}`;
+
+        try {
+          const events = await axios.get(url);
+          console.log(events);
+        } catch(e) {
+          console.error(e);
+        }
+        
+      }
+      
+  }
+
+
 
   render() {
     return (
@@ -60,7 +86,8 @@ class Search extends Component {
           className="form-control" 
           placeholder="Location" 
           value={this.state.query}
-          onChange={this.handleChange} />
+          onChange={this.handleChange}
+          onKeyPress={this.searchEvents} />
       </div>
     )
   }

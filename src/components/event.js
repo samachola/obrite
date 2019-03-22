@@ -9,7 +9,6 @@ class Event extends Component {
 
   render() {
     let price = this.props.event.priceRanges && this.props.event.priceRanges[0];
-    console.log(price);
     price = price || {};
 
     return (

@@ -13,13 +13,19 @@ class Events extends Component {
       title: 'Search For Obrite Events',
       events: [],
     };
+    
+    this.getEvents = this.getEvents.bind(this);
   }
 
   componentDidMount() {
+    this.getEvents();
+  }
+
+  getEvents() {
+    // TODO get list of events based on location
     axios.get('https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&apikey=fGchp4gcJKe22eomi9nNMjD7Awn9vUFg')
       .then(res => {
         this.setState({events: [...res.data._embedded.events]});
-        console.log(this.state);
       })
       .catch(err => console.log(err));
   }
