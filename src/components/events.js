@@ -15,6 +15,7 @@ class Events extends Component {
     };
     
     this.getEvents = this.getEvents.bind(this);
+    this.getEventsByLocation = this.getEventsByLocation.bind(this);
   }
 
   componentDidMount() {
@@ -30,6 +31,12 @@ class Events extends Component {
       .catch(err => console.log(err));
   }
 
+  getEventsByLocation (events) {
+    console.log(events);
+    this.setState({ events });
+  }
+  
+
   render() {
     return (
       <div className="site-section">
@@ -37,13 +44,14 @@ class Events extends Component {
             <div className="row">
               <div className="col-md-6 mx-auto text-center mb-5 section-heading">
                 <h3 className="mb-5 text-uppercase">{ this.state.title }</h3>
-                <Search />
+
+                <Search eventsByLocation={this.getEventsByLocation} />
 
               </div>
             </div>
             <div className="row">
               {
-                this.state.events.length && this.state.events.map((event) => (
+                this.state.events.length > 0 && this.state.events.map((event) => (
                   <Event event={event} key={event.id} />
                 ))
               }

@@ -52,18 +52,15 @@ class Search extends Component {
   }
 
   async searchEvents() {
-      console.log(this.state.location);
       if (this.state.location && this.state.location.lat() && this.state.location.lng() ) {
         const lat = this.state.location.lat();
         const lng = this.state.location.lng();
-
-        console.log(lat, lng);
         const latlng = `${lat},${lng}`;
-        const url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=fGchp4gcJKe22eomi9nNMjD7Awn9vUFg&${latlng}`;
+        const url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=fGchp4gcJKe22eomi9nNMjD7Awn9vUFg&latlong=${latlng}`;
 
         try {
           const events = await axios.get(url);
-          console.log(events);
+          this.props.eventsByLocation(events.data._embedded.events)
         } catch(e) {
           console.error(e);
         }
